@@ -75,14 +75,14 @@ function App() {
     });
   })
 
-  function playNote() {
-    console.log("playNote");
-    sv_send_event(0, 0, 64, 128, mod + 1, 0, 0);
-  }
-
   function stopNote() {
     console.log("stopNote");
     sv_send_event(0, 0, NOTECMD_NOTE_OFF, 0, 0, 0, 0);
+  }
+
+  function playNoteNumber(number) {
+    console.log("playNote", number);
+    sv_send_event(0, 0, number, 128, mod + 1, 0, 0);
   }
 
   return (
@@ -91,8 +91,28 @@ function App() {
         <h1>SunVoxLib Demo</h1>
         Status: <font id="status">{status}</font>
         <form action="">
-          <button type="button" onClick={playNote}><big>Play note</big></button>
           <button type="button" onClick={stopNote}><big>Stop note</big></button>
+          <br></br>
+          C major scale:
+          <br></br>
+          <button type="button" onClick={() => playNoteNumber(64)}>C</button>
+          <button type="button" onClick={() => playNoteNumber(66)}>D</button>
+          <button type="button" onClick={() => playNoteNumber(68)}>E</button>
+          <button type="button" onClick={() => playNoteNumber(69)}>F</button>
+          <button type="button" onClick={() => playNoteNumber(71)}>G</button>
+          <button type="button" onClick={() => playNoteNumber(73)}>A</button>
+          <button type="button" onClick={() => playNoteNumber(75)}>B</button>
+          <br></br>
+          A minor scale:
+          <br></br>
+          <button type="button" onClick={() => playNoteNumber(73)}>A</button>
+          <button type="button" onClick={() => playNoteNumber(75)}>B</button>
+          <button type="button" onClick={() => playNoteNumber(76)}>C</button>
+          <button type="button" onClick={() => playNoteNumber(78)}>D</button>
+          <button type="button" onClick={() => playNoteNumber(80)}>E</button>
+          <button type="button" onClick={() => playNoteNumber(81)}>F</button>
+          <button type="button" onClick={() => playNoteNumber(83)}>G</button>
+          <br></br>
         </form>
       </div>
     </>
