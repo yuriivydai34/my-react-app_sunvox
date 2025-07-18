@@ -73,6 +73,15 @@ function App() {
       };
       req.send(null);
     });
+
+    const keys = document.querySelectorAll('.piano-keys');
+
+    keys.forEach((key) => {
+      key.addEventListener('click', (e) => {
+        const clickedKey = e.target.dataset.key;
+        playNoteNumber(parseInt(clickedKey));
+      })
+    })
   })
 
   function stopNote() {
@@ -86,36 +95,40 @@ function App() {
   }
 
   return (
-    <>
-      <div>
-        <h1>SunVoxLib Demo</h1>
-        Status: <font id="status">{status}</font>
-        <form action="">
-          <button type="button" onClick={stopNote}><big>Stop note</big></button>
-          <br></br>
-          C major scale:
-          <br></br>
-          <button type="button" onClick={() => playNoteNumber(64)}>C</button>
-          <button type="button" onClick={() => playNoteNumber(66)}>D</button>
-          <button type="button" onClick={() => playNoteNumber(68)}>E</button>
-          <button type="button" onClick={() => playNoteNumber(69)}>F</button>
-          <button type="button" onClick={() => playNoteNumber(71)}>G</button>
-          <button type="button" onClick={() => playNoteNumber(73)}>A</button>
-          <button type="button" onClick={() => playNoteNumber(75)}>B</button>
-          <br></br>
-          A minor scale:
-          <br></br>
-          <button type="button" onClick={() => playNoteNumber(73)}>A</button>
-          <button type="button" onClick={() => playNoteNumber(75)}>B</button>
-          <button type="button" onClick={() => playNoteNumber(76)}>C</button>
-          <button type="button" onClick={() => playNoteNumber(78)}>D</button>
-          <button type="button" onClick={() => playNoteNumber(80)}>E</button>
-          <button type="button" onClick={() => playNoteNumber(81)}>F</button>
-          <button type="button" onClick={() => playNoteNumber(83)}>G</button>
-          <br></br>
-        </form>
+    <div className="container">
+      <div className="intro-container">
+        <h1>How to Build a Piano Using HTML, CSS, and JavaScript</h1>
+        <h3>This is a 24-key piano. Click any piano key to play the sound.</h3>
       </div>
-    </>
+      <div className="piano-container">
+        <ul className="piano-keys-list">
+          <li className="piano-keys white-key" data-key="57"></li>
+          <li className="piano-keys black-key" data-key="58"></li>
+          <li className="piano-keys white-key" data-key="59"></li>
+          <li className="piano-keys black-key" data-key="60"></li>
+          <li className="piano-keys white-key" data-key="61"></li>
+          <li className="piano-keys black-key" data-key="62"></li>
+          <li className="piano-keys white-key" data-key="63"></li>
+          <li className="piano-keys white-key" data-key="64"></li>
+          <li className="piano-keys black-key" data-key="65"></li>
+          <li className="piano-keys white-key" data-key="66"></li>
+          <li className="piano-keys black-key" data-key="67"></li>
+          <li className="piano-keys white-key" data-key="68"></li>
+          <li className="piano-keys white-key" data-key="69"></li>
+          <li className="piano-keys black-key" data-key="70"></li>
+          <li className="piano-keys white-key" data-key="71"></li>
+          <li className="piano-keys black-key" data-key="72"></li>
+          <li className="piano-keys white-key" data-key="73"></li>
+          <li className="piano-keys black-key" data-key="74"></li>
+          <li className="piano-keys white-key" data-key="75"></li>
+          <li className="piano-keys white-key" data-key="76"></li>
+          <li className="piano-keys black-key" data-key="77"></li>
+          <li className="piano-keys white-key" data-key="78"></li>
+          <li className="piano-keys black-key" data-key="79"></li>
+          <li className="piano-keys white-key" data-key="80"></li>
+        </ul>
+      </div>
+    </div>
   )
 }
 
